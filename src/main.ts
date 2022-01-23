@@ -1,21 +1,9 @@
-import { createApp } from 'vue'
+import './lib/gulu.scss'
+import './index.scss'
+import {createApp} from 'vue'
 import App from './App.vue'
-import './index.css'
-import { createWebHashHistory, createRouter } from 'vue-router'
-import Home from './views/Home.vue'
-import Doc from './views/Doc.vue'
+import {router} from './router'
 
-const history = createWebHashHistory()
-const router = createRouter({
-    history: history,
-    routes: [
-        { path: '/', component: Home },
-        { path: '/Doc', component: Doc },
-        { path: '/switch', component: '' },
-        { path: '/button', component: '' },
-    ]
-})
-
-const app = createApp(App)
-app.use(router)
+const app = createApp(App);
+app.use(router);
 app.mount('#app')
