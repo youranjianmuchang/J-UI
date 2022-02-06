@@ -1,13 +1,15 @@
 <template>
   <div class="gulu-tabs">
-    <div class="gulu-tabs-nav">
+    <div class="gulu-tabs-nav" ref="container">
       <div
         class="gulu-tabs-nav-item"
         :class="{selected: title === selected}"
         v-for="(title,index) in titleList"
+        :ref=" el => { if (title === selected) selectedElement = el }"
         :key="index"
         @click="select(title)"
       >{{title}}</div>
+      <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
       <component
@@ -22,6 +24,7 @@
 </template>
 <script lang="ts">
 import Tab from "./Tab.vue";
+import { ref, onMounted, watchEffect } from "vue";
 export default {
   name: "Tabs",
   props: {
@@ -30,6 +33,20 @@ export default {
     }
   },
   setup(props, context) {
+    const selectedElement = ref<HTMLDivElement>(null);
+    const indicator = ref<HTMLDivElement>(null);
+    const container = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      watchEffect(() => {
+        const {
+          width,
+          left: left1
+        } = selectedElement.value.getBoundingClientRect();
+        indicator.value.style.width = width + "px";
+        const { left: left2 } = container.value.getBoundingClientRect();
+        indicator.value.style.left = left1 - left2 + "px";
+      });
+    });
     const slotsNode = context.slots.default();
     slotsNode.forEach(element => {
       if (element.type !== Tab) {
@@ -43,7 +60,10 @@ export default {
     return {
       slotsNode,
       titleList,
-      select
+      select,
+      selectedElement,
+      indicator,
+      container
     };
   }
 };
