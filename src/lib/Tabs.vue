@@ -12,19 +12,13 @@
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
-      <component
-        class="gulu-tabs-content-item"
-        :class="{selected: node.props.title === selected}"
-        v-for="(node, index) in slotsNode"
-        :key="index"
-        :is="node"
-      ></component>
+      <component :is="currentComponent" :key="currentComponent.props.title"></component>
     </div>
   </div>
 </template>
 <script lang="ts">
 import Tab from "./Tab.vue";
-import { ref, onMounted, watchEffect } from "vue";
+import { ref, onMounted, watchEffect, computed } from "vue";
 export default {
   name: "Tabs",
   props: {
@@ -53,6 +47,9 @@ export default {
         throw new Error("Tabs子标签必须是Tab");
       }
     });
+    const currentComponent = computed(() => {
+      return slotsNode.filter(node => node.props.title === props.selected)[0];
+    });
     const titleList = slotsNode.map(item => item.props.title);
     const select = function(title) {
       context.emit("update:selected", title);
@@ -63,7 +60,8 @@ export default {
       select,
       selectedElement,
       indicator,
-      container
+      container,
+      currentComponent
     };
   }
 };
