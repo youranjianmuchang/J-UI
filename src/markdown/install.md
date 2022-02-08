@@ -12,4 +12,4 @@ npm install vue3-j-ui
 yarn add vue3-j-ui
 ```
 
-下一节：[开始使用](#/doc/get-started)
+下一节：[开始使用](#/doc/getStart)
