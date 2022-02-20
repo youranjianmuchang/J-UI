@@ -106,7 +106,7 @@ aside {
   > ol {
     > li {
       a {
-        padding: 4px 16px;
+        padding: 10px 16px;
         display: block;
         text-decoration: none;
         &:hover {
