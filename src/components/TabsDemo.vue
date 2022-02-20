@@ -8,7 +8,7 @@ import Tabs1 from "../components/Tabs1.demo.vue";
 import Demo from "../components/Demo.vue";
 export default {
   name: "TabsDemo",
-  components: { Tabs1, Demo },
+  components: { Demo },
   setup() {
     return {
       Tabs1

@@ -10,7 +10,7 @@ import Dialog1 from "../components/Dialog1.demo.vue";
 import Dialog2 from "../components/Dialog2.demo.vue";
 export default {
   name: "DialogDemo",
-  components: { Dialog1, Demo, Dialog2 },
+  components: { Demo },
   setup() {
     return { Dialog1, Dialog2 };
   }

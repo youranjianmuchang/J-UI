@@ -8,13 +8,19 @@
       <Button @click="toggleCode">查看代码</Button>
     </div>
     <div class="demo-code" v-if="codeVisible">
-      <pre class="language-html" v-text="component.__sourceCode" />
+      <pre
+        class="language-html"
+        v-html="Prism.highlight(component.__sourceCode,Prism.languages.html,'html')"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Button from "../lib/Button.vue";
+import "prismjs";
+import "prismjs/themes/prism.css";
+const Prism = (window as any).Prism;
 import { computed, ref } from "vue";
 export default {
   components: {
@@ -28,7 +34,8 @@ export default {
     const codeVisible = ref(true);
     return {
       codeVisible,
-      toggleCode
+      toggleCode,
+      Prism
     };
   }
 };

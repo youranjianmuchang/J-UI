@@ -16,7 +16,7 @@ import Button4 from "../components/Button4.demo.vue";
 import Button5 from "../components/Button5.demo.vue";
 export default {
   name: "ButtonDemo",
-  components: { Demo, Button1, Button2, Button3, Button4, Button5 },
+  components: { Demo },
   setup() {
     const onClick = () => {
       console.log("hi");

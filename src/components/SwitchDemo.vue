@@ -10,7 +10,7 @@ import Switch2 from "../components/Switch2.demo.vue";
 import Demo from "../components/Demo.vue";
 export default {
   name: "SwitchDemo",
-  components: { Switch1, Switch2, Demo },
+  components: { Demo },
   setup() {
     return {
       Switch1,
