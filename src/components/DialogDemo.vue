@@ -1,50 +1,21 @@
 <template>
-    <h1>示例1</h1>
-    <Button @click="toggle">直接引用弹窗组件</Button>
-    <Dialog v-model:visible="visible">
-        <template v-slot:header>
-            <span>弹窗标题111</span>
-        </template>
-        <template v-slot:content>
-            <div>标题111</div>
-            <div>标题2</div>
-        </template>
-    </Dialog>
-    <h1>示例2</h1>
-    <Button @click="showDialog">通过函数的形式调用弹窗</Button>
+  <h1>Dialog 组件</h1>
+  <Demo :component="Dialog1" />
+  <Demo :component="Dialog2" />
 </template>
 
 <script>
-    import Dialog from '../lib/Dialog.vue'
-    import Button from '../lib/Button.vue'
-    import { openDialog } from '../lib/openDialog'
-    import { ref } from 'vue'
-    export default {
-        name: "DialogDemo",
-        components: {Dialog, Button},
-        setup() {
-            const visible = ref(false);
-            const toggle = () => {
-                visible.value = !visible.value
-            }
-            const showDialog = () => {
-                openDialog({
-                    header: '标题111',
-                    content: '你好',
-                    ok: ()=>{
-                        console.log('ok')
-                    },
-                    cancel: ()=>{
-                        console.log('cancel')
-                    },
-                    closeOnClickOverlay: false
-                })
-            }
-            return { visible, toggle, showDialog }
-        }
-    }
+import Demo from "../components/Demo.vue";
+import Dialog1 from "../components/Dialog1.demo.vue";
+import Dialog2 from "../components/Dialog2.demo.vue";
+export default {
+  name: "DialogDemo",
+  components: { Dialog1, Demo, Dialog2 },
+  setup() {
+    return { Dialog1, Dialog2 };
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
