@@ -5,7 +5,6 @@ import Switch from "./components/SwitchDemo.vue";
 import Button from "./components/ButtonDemo.vue";
 import Dialog from "./components/DialogDemo.vue";
 import Tabs from "./components/TabsDemo.vue";
-import DocDefault from "./components/DocDefault.vue";
 import { h } from 'vue';
 import Markdown from './components/Markdown.vue';
 const md = filename => h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
@@ -17,7 +16,7 @@ export const router = createRouter({
         { path: '/', component: Home },
         {
             path: '/Doc', component: Doc, children: [
-                { path: '', component: DocDefault },
+                { path: '', redirect: '/doc/intro' },
                 { path: 'Intro', component: md('intro') },
                 { path: 'GetStart', component: md('get-start') },
                 { path: 'Install', component: md('install') },
