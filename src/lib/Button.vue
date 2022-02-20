@@ -1,50 +1,49 @@
 <template>
-    <button :disabled="disabled" v-bind="rest" class="gulu-button" :class="classes">
-        <span v-if="loading" class="gulu-loadingIndicator"></span>
-        <slot/>
-    </button>
+  <button :disabled="disabled" v-bind="rest" class="gulu-button" :class="classes">
+    <span v-if="loading" class="gulu-loadingIndicator"></span>
+    <slot />
+  </button>
 </template>
 
 <script lang="ts">
-    import { computed } from 'vue'
-    export default {
-        name: "Button",
-        inheritAttrs:false,
-        props: {
-            theme: {
-                type: String,
-                default: 'button'
-            },
-            disabled: {
-                type: Boolean,
-                default: false
-            },
-            loading: {
-                type: Boolean,
-                default: false
-            },
-            size: {
-                type: String,
-                default: 'normal'
-            },
-            level: {
-                type: String
-            }
-        },
-        setup(props, context) {
-            const { class:classStr, ...rest } = context.attrs;
-            const { size, theme, level } = props
-            console.log(classStr)
-            const classes = computed ( ()=> {
-                return {
-                    [`gulu-theme-${theme}`]: theme,
-                    [`gulu-size-${size}`]: size,
-                    [`gulu-level-${level}`]: level
-                }
-            })
-            return { classStr, rest, classes } 
-        }
+import { computed } from "vue";
+export default {
+  name: "Button",
+  inheritAttrs: false,
+  props: {
+    theme: {
+      type: String,
+      default: "button"
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: "normal"
+    },
+    level: {
+      type: String
     }
+  },
+  setup(props, context) {
+    const { class: classStr, ...rest } = context.attrs;
+    const { size, theme, level } = props;
+    const classes = computed(() => {
+      return {
+        [`gulu-theme-${theme}`]: theme,
+        [`gulu-size-${size}`]: size,
+        [`gulu-level-${level}`]: level
+      };
+    });
+    return { classStr, rest, classes };
+  }
+};
 </script>
 
 <style lang="scss">
@@ -168,18 +167,19 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-link, &.gulu-theme-text {
+  &.gulu-theme-link,
+  &.gulu-theme-text {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
     }
   }
-  > .gulu-loadingIndicator{
+  > .gulu-loadingIndicator {
     width: 14px;
     height: 14px;
     display: inline-block;
     margin-right: 4px;
-    border-radius: 8px; 
+    border-radius: 8px;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
@@ -187,8 +187,12 @@ $grey: grey;
   }
 }
 @keyframes gulu-spin {
-  0%{transform: rotate(0deg)} 
-  100%{transform: rotate(360deg)} 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
  

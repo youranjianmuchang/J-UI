@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Switch1 from "../components/Switch1.vue";
-import Switch2 from "../components/Switch2.vue";
+import Switch1 from "../components/Switch1.demo.vue";
+import Switch2 from "../components/Switch2.demo.vue";
 import Demo from "../components/Demo.vue";
 export default {
   name: "SwitchDemo",

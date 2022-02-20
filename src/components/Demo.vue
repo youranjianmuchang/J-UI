@@ -26,7 +26,6 @@ export default {
   setup(props) {
     const toggleCode = () => (codeVisible.value = !codeVisible.value);
     const codeVisible = ref(true);
-    console.log(props.component);
     return {
       codeVisible,
       toggleCode
