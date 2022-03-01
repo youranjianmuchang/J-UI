@@ -62,12 +62,14 @@ export default {
 
   > .nav {
     flex-shrink: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px #f0f1f2;
+    position: relative;
   }
 
   > .content {
     flex-grow: 1;
-    padding-top: 60px;
-    padding-left: 156px;
+    padding-top: 20px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -88,16 +90,16 @@ export default {
 }
 
 aside {
-  background: lightblue;
-  width: 150px;
+  min-width: 150px;
+  width: 15%;
+  transition: width 0.5s;
   padding: 16px 0;
-  position: fixed;
   top: 0;
   left: 0;
-  padding-top: 70px;
   height: 100%;
   z-index: 1;
-
+  border-right: 1px solid #f0f0f0;
+  margin-right: 20px;
   > h2 {
     margin-bottom: 4px;
     padding: 4px 16px;
