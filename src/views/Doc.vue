@@ -33,6 +33,7 @@
       </aside>
       <main>
         <router-view />
+        <MenuButton />
       </main>
     </div>
   </div>
@@ -40,12 +41,14 @@
 
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
+import MenuButton from "../components/MenuButton.vue";
 import { inject, Ref } from "vue";
 
 export default {
   name: "Doc.vue",
   components: {
-    Topnav
+    Topnav,
+    MenuButton
   },
   setup() {
     const asideVisible = inject<Ref<boolean>>("visible");
