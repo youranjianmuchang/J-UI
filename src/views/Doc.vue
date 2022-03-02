@@ -90,9 +90,8 @@ export default {
 }
 
 aside {
-  min-width: 150px;
+  min-width: 170px;
   width: 15%;
-  transition: width 0.5s;
   padding: 16px 0;
   top: 0;
   left: 0;
@@ -101,16 +100,25 @@ aside {
   border-right: 1px solid #f0f0f0;
   margin-right: 20px;
   > h2 {
-    margin-bottom: 4px;
-    padding: 4px 16px;
+    padding-left: 50px;
+    margin: 15px 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
 
   > ol {
     > li {
+      padding: 5px 0;
       a {
-        padding: 10px 16px;
         display: block;
         text-decoration: none;
+        padding: 10px 0 10px 50px;
+        &.router-link-active {
+          background-color: #e6f7ff;
+          color: #1890ff;
+          border-right: 2px solid #1890ff;
+        }
         &:hover {
           border-bottom: 0;
         }

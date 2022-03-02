@@ -5,7 +5,7 @@
       <component :is="component" />
     </div>
     <div class="demo-actions">
-      <Button @click="toggleCode">查看代码</Button>
+      <Button @click="toggleCode">{{buttonName}}</Button>
     </div>
     <div class="demo-code" v-if="codeVisible">
       <pre
@@ -32,10 +32,14 @@ export default {
   setup(props) {
     const toggleCode = () => (codeVisible.value = !codeVisible.value);
     const codeVisible = ref(true);
+    const buttonName = computed(() => {
+      return codeVisible.value ? "收起代码" : "查看代码";
+    });
     return {
       codeVisible,
       toggleCode,
-      Prism
+      Prism,
+      buttonName
     };
   }
 };
