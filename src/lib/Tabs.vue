@@ -39,11 +39,12 @@ export default {
         indicator.value.style.width = width + "px";
         const { left: left2 } = container.value.getBoundingClientRect();
         indicator.value.style.left = left1 - left2 + "px";
-      });
+      },{flush: 'post'});
     });
     const slotsNode = context.slots.default();
     slotsNode.forEach(element => {
-      if (element.type !== Tab) {
+      // @ts-ignore
+      if (element.type.name !== Tab.name) {
         throw new Error("Tabs子标签必须是Tab");
       }
     });
