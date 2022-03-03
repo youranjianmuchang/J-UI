@@ -13,8 +13,8 @@
                     <slot name="content" />
                 </main>
                 <footer>
-                    <Button @click="ok" level="main">ok</Button>
-                    <Button @click="cancel">cancel</Button>
+                    <Button @click="cancel">{{cancelName}}</Button>
+                    <Button @click="ok" level="main">{{okName}}</Button>
                 </footer>
             </div>
         </div>
@@ -46,7 +46,15 @@ export default {
             default () {
               return () => {}
             }
-        }
+        },
+        okName: {
+          type: String,
+          default: '确定'
+        },
+          cancelName: {
+            type: String,
+            default: '取消'
+          }
     },
     setup (props, context) {
         const close = () =>{
