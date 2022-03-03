@@ -4,10 +4,13 @@ import fs from 'fs'
 import { baseParse } from '@vue/compiler-core'
 
 export default {
+    base: './',
+    assetsDir: 'asset',
     plugins: [md()],
     vueCustomBlockTransforms: {
         demo: (options) => {
             const { code, path } = options
+            //异步读取文件内容，并转为string类型
             const file = fs.readFileSync(path).toString()
             const parsed = baseParse(file).children.find(n => n.tag === 'demo')
             const title = parsed.children[0].content
