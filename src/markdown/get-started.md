@@ -25,3 +25,5 @@ export default {
 }
 </script>
 ```
+
+下一节：[组件](#/doc/button)
