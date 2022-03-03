@@ -1,24 +1,27 @@
 <template>
   <div class="Topnav">
-    <div class="logo">J-UI</div>
+    <div class="logo">
+      <router-link to="/">J-UI</router-link>
+    </div>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档</router-link>
+      </li>
     </ul>
     <!-- <span class="toggleAside" @click="toggleTop"></span> -->
   </div>
 </template>
 
 <script lang="ts">
-import { inject, Ref } from "vue";
+// import { inject, Ref } from "vue";
 export default {
   name: "Topnav",
   setup() {
-    const asideVisible = inject<Ref<boolean>>("visible");
-    const toggleTop = () => {
-      asideVisible.value = !asideVisible.value;
-    };
-    return { toggleTop };
+    // const asideVisible = inject<Ref<boolean>>("visible");
+    // const toggleTop = () => {
+    //   asideVisible.value = !asideVisible.value;
+    // };
+    // return { toggleTop };
   }
 };
 </script>
@@ -68,6 +71,7 @@ export default {
     // > .logo {
     //   margin: 0 auto;
     // }
+    padding: 16px;
     > .toggleAside {
       display: inline-block;
     }
