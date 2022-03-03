@@ -5,6 +5,9 @@
   <Demo :component="Button3" />
   <Demo :component="Button4" />
   <Demo :component="Button5" />
+  <div class="bottom-nav">
+    <router-link to="/Doc/Switch">Switch 组件 >></router-link>
+  </div>
 </template>
 
 <script>
@@ -26,5 +29,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .bottom-nav{
+    color: #1890ff;
+    text-align: right;
+    margin-bottom: 9px;
+    a {
+      padding-bottom: 1px;
+      border-bottom: 1px solid;
+    }
+  }
 </style>

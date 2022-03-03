@@ -18,10 +18,10 @@
         <h2>组件列表</h2>
         <ol>
           <li>
-            <router-link to="/Doc/Switch">Switch 组件</router-link>
+            <router-link to="/Doc/Button">Button 组件</router-link>
           </li>
           <li>
-            <router-link to="/Doc/Button">Button 组件</router-link>
+            <router-link to="/Doc/Switch">Switch 组件</router-link>
           </li>
           <li>
             <router-link to="/Doc/Dialog">Dialog 组件</router-link>
@@ -33,7 +33,7 @@
       </aside>
       <main>
         <router-view />
-        <MenuButton />
+        <MenuButton v-if="!asideVisible" />
       </main>
     </div>
   </div>
@@ -42,8 +42,9 @@
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
 import MenuButton from "../components/MenuButton.vue";
-import { inject, Ref } from "vue";
-
+import { openDialog } from "../lib/openDialog";
+// import { inject, Ref } from "vue";
+import { ref } from "vue"
 export default {
   name: "Doc.vue",
   components: {
@@ -51,7 +52,35 @@ export default {
     MenuButton
   },
   setup() {
-    const asideVisible = inject<Ref<boolean>>("visible");
+    const pageWidth = document.documentElement.clientWidth;
+    if (pageWidth <= 500 ) {
+      const isLogined =localStorage.getItem('logined')
+      if (!isLogined) {
+        const showDialog = () => {
+          openDialog({
+            header: "提示",
+            content: "为了有更好的阅读体验，建议在电脑上查看",
+            ok: () => {
+              localStorage.setItem('logined', "true")
+            },
+            okName: '不再提示',
+            cancelName: '确定'
+          });
+        };
+        showDialog()
+      }
+    }
+    // const asideVisible = inject<Ref<boolean>>("visible");
+    const asideVisible = ref(false)
+    const judge = () => {
+      const pageWidth = document.documentElement.clientWidth;
+      const isPC = pageWidth <= 500 ? false : true;
+      asideVisible.value = isPC
+    }
+    judge();
+    window.onresize=function(){
+      judge();
+    }
     return { asideVisible };
   }
 };
@@ -121,9 +150,6 @@ aside {
           background-color: #e6f7ff;
           color: #1890ff;
           border-right: 2px solid #1890ff;
-        }
-        &:hover {
-          border-bottom: 0;
         }
       }
       .router-link-active {

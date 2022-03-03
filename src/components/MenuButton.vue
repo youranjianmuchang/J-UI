@@ -1,6 +1,16 @@
 <template>
 <ol class="menu-icon" :class="{showMenu: menuVisible}">
     <li class="menu-icon-item" @click="buttonClikc">
+        <router-link to="/Doc/Button">
+            <div class="icon-label">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-button"></use>
+                </svg>
+            </div>
+            <div class="icon-name">button</div>
+        </router-link>
+    </li>
+    <li class="menu-icon-item" @click="buttonClikc">
         <router-link to="/Doc/Switch">
         <div class="icon-label">
             <svg class="icon" aria-hidden="true">
@@ -10,17 +20,6 @@
         <div class="icon-name">switch</div>
         </router-link>
     </li>
-    <li class="menu-icon-item" @click="buttonClikc">
-        <router-link to="/Doc/Button">
-        <div class="icon-label">
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-button"></use>
-        </svg>
-        </div>
-        <div class="icon-name">button</div>
-        </router-link>
-    </li>
-    
     <li class="menu-icon-item" @click="buttonClikc">
         <router-link to="/Doc/Dialog">
         <div class="icon-label">
@@ -41,18 +40,10 @@
         <div class="icon-name">tabs</div>
         </router-link>
     </li>
-    <li class="menu-icon-item close" @click="buttonClikc">
-        <div class="icon-label">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-close"></use>
-            </svg>
-        </div>
-        <div class="icon-name">close</div>
-    </li>
     <li class="menu-icon-item more" @click="buttonClikc">
         <div class="icon-label">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-more"></use>
+                <use xlink:href="#icon-add"></use>
             </svg>
         </div>
     </li>
@@ -66,7 +57,7 @@ export default {
   setup() {
     const menuVisible = ref(false)
     const buttonClikc = () => {
-        menuVisible.value = !menuVisible.value
+      menuVisible.value = !menuVisible.value
     }
     return {
         menuVisible,
@@ -77,18 +68,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .menu-icon {
+  transition: width .5s linear;
   position: fixed;
-  right: 7%;
+  right: 16px;
   bottom: 10%;
   height: 50px;
   width: 50px;
-  transition: width .5s;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   background: #fff;
-  border-radius: 30px;
   box-shadow: rgb(200 200 200) 0px 2px 8px;
+  overflow: hidden;
   .menu-icon-item{
     display: none;
     flex-wrap: wrap;
@@ -98,6 +89,8 @@ export default {
         display: flex;
         align-items: center;
         cursor: pointer;
+        transform: rotateZ(0deg);
+        transition: transform .5s linear;
     }
   }
   .icon-label {
@@ -108,33 +101,16 @@ export default {
     width: 100%;
     text-align: center;
   }
-  a:hover{
-    border-bottom: 0px;
-  }
   &.showMenu{
-    width: initial;
+    width: 350px;
     border-radius: 10px;
     .menu-icon-item {
         display: flex;
         &.more {
-            display: none;
+            transform: rotateZ(135deg);
         }
     }
   }
-//   .close{
-//       position: relative;
-//      &::after{
-//          content: '';
-//          display: block;
-//          position: absolute;
-//          height: 48px;
-//          width: 1px;
-//          background-color: #1890ff;
-//          top: 50%;
-//          left: -20px;
-//          transform: translateY(-50%)
-//      }
-//   }
 }
 
 </style>
