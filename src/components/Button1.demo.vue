@@ -1,7 +1,6 @@
 <demo>不同类型</demo>
 <template>
   <Button @click="onClick">默认</Button>
-  <Button theme="button">我是按钮</Button>
   <Button theme="link">我是链接</Button>
   <Button theme="text">我是文本</Button>
 </template>
